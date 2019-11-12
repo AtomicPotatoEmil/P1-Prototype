@@ -30,7 +30,7 @@ class LoadData {
   void loadBoolean(String name) {
     loadJSON = loadJSONObject("data/saveData.json");
     if (loadJSON.isNull(name)) {
-      println("No such variable stored in JSON file");
+      println("boolean not stored in JSON file");
     } else {
       loadJSON.getInt(name);
       println("boolean found");
