@@ -1,23 +1,22 @@
 
-class SaveData{
+class SaveData {
   JSONObject saveJSON;
-  
-  SaveData(){
+
+  SaveData() {
     saveJSON = new JSONObject();
-    
   }
-  
-  void saveInt(String name, int number){
+
+  void saveInt(String name, int number) {
     saveJSON.setInt(name, number);
     saveJSONObject(saveJSON, "data/saveData.json");
   }
-  
-  void saveString(String name, String string){
+
+  void saveString(String name, String string) {
     saveJSON.setString(name, string);
     saveJSONObject(saveJSON, "data/saveData.json");
   }
-  
-  void saveBoolean(String name, boolean bool){
+
+  void saveBoolean(String name, boolean bool) {
     saveJSON.setBoolean(name, bool);
     saveJSONObject(saveJSON, "data/saveData.json");
   }
