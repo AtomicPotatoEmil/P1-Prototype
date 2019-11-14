@@ -31,7 +31,7 @@ class LoadData {
     if (loadJSON.isNull(name)) {
       println("boolean not stored in JSON file");
     } else {
-      loadJSON.getInt(name);
+      loadJSON.getBoolean(name);
       println("boolean found");
     }
   }
