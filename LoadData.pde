@@ -4,7 +4,6 @@ class LoadData {
 
   LoadData() {
     loadJSON = new JSONObject();
-    
   }
 
   void loadInt(String name) {
