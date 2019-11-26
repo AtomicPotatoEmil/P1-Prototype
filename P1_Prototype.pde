@@ -3,6 +3,8 @@ LoadData load;
 
 PImage mainButtons;
 PImage sleepButtonHover;
+PImage lexiconButtonHover;
+PImage infoButtonHover;
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
   f.eks save.saveInt("five", 5);
@@ -27,6 +29,8 @@ void setup() {
   
   mainButtons = loadImage("mainButtons.png");
   sleepButtonHover = loadImage("sleepButtonHover.png");
+  lexiconButtonHover = loadImage("lexiconButtonHover.png");
+  infoButtonHover = loadImage("infoButtonHover.png");
   
   size(480, 853);
 }
@@ -47,14 +51,22 @@ void startPage(){
   mainButtons();
   
   fill(250 ,0 ,0);
-  rect(0, 738, 158, 200);
+  //rect(320, 738, 158, 200);
 }
 
 void mainButtons(){
   
-  if(mouseX < 0 && mouseX > 158 && mouseY > 738 && mouseY < 938){
+  if(mouseX > 0 && mouseX < 158 && mouseY > 738 && mouseY < 938){
     image(sleepButtonHover, 0, 0);
+  }else if(mouseX > 158 && mouseX < 316 && mouseY > 738 && mouseY < 938){
+    image(lexiconButtonHover, 0, 0);
+  }else if(mouseX > 320 && mouseX < 520 && mouseY > 738 && mouseY < 938){
+    image(infoButtonHover, 0, 0);
   }else{
     image(mainButtons, 0, 0);
   }
+}
+
+void header(String name){
+  
 }
