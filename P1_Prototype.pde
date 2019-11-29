@@ -5,7 +5,10 @@ PImage mainButtons;
 PImage sleepButtonHover;
 PImage lexiconButtonHover;
 PImage infoButtonHover;
-PImage header;
+
+PImage background;
+PImage mainUI;
+
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
   f.eks save.saveInt("five", 5);
@@ -32,7 +35,9 @@ void setup() {
   sleepButtonHover = loadImage("sleepButtonHover.png");
   lexiconButtonHover = loadImage("lexiconButtonHover.png");
   infoButtonHover = loadImage("infoButtonHover.png");
-  header = loadImage("header.png");
+  
+  background = loadImage("background.png");
+  mainUI = loadImage("mainUI.png");
   
   size(480, 853);
 }
@@ -50,27 +55,19 @@ void draw() {
 
 
 void startPage(){
-  mainButtons();
-  
-  fill(250 ,0 ,0);
-  //rect(320, 738, 158, 200);
-  header("");
+  image(background, 0, 0);
+  mainUI();
 }
 
-void mainButtons(){
+void mainUI(){
   
-  if(mouseX > 0 && mouseX < 158 && mouseY > 738 && mouseY < 938){
+  if(mouseX > 0 && mouseX < 158 && mouseY > 718 && mouseY < 938){
     image(sleepButtonHover, 0, 0);
-  }else if(mouseX > 158 && mouseX < 316 && mouseY > 738 && mouseY < 938){
+  }else if(mouseX > 158 && mouseX < 316 && mouseY > 718 && mouseY < 938){
     image(lexiconButtonHover, 0, 0);
-  }else if(mouseX > 320 && mouseX < 520 && mouseY > 738 && mouseY < 938){
+  }else if(mouseX > 320 && mouseX < 520 && mouseY > 718 && mouseY < 938){
     image(infoButtonHover, 0, 0);
   }else{
-    image(mainButtons, 0, 0);
+    image(mainUI, 0, 0);
   }
-}
-
-void header(String name){
-  fill(0);
-  image(header, 0, 0);
 }
