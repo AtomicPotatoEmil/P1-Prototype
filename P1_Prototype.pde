@@ -12,7 +12,6 @@ PImage lexiconIcon;
 PImage mainUI;
 PImage smileyHappy;
 PImage smileySleep;
-PImage infoIcon;
 PImage background;
 
 int sleepAssistX = 0;
@@ -61,7 +60,6 @@ void setup() {
   mainUI = loadImage("mainUI.png");
   smileyHappy = loadImage("smileyHappy.png");
   smileySleep = loadImage("smileySleep.png");
-  infoIcon = loadImage("infoIcon.png");
   background = loadImage("background.png");
   
   
