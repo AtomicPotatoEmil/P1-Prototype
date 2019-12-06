@@ -1,6 +1,6 @@
 String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
 class Logbook { 
-  int titleX, titleY, totalScoreY, thisWeekY, lastWeekY;
+  int titleX, titleY, totalScoreY, thisWeekY, lastWeekY, line1Y, line2Y;
 
   Logbook() {
     titleX = width/2;
@@ -8,6 +8,8 @@ class Logbook {
     totalScoreY = height/8;
     thisWeekY = height/8*3;
     lastWeekY = height/8*5;
+    line1Y = height/4+50;
+    line2Y = height/2+50;
   }
 
   void logbookDraw() {
@@ -22,8 +24,10 @@ class Logbook {
     textSize(20);
     text("Points this week:", titleX, thisWeekY);
     text("Points last week:", titleX, lastWeekY);
-//line(0,height/8*3,width,height/8*3);
-//line(0,height/3,width,height/4*3);
+    
+    line(0, line1Y, width, line1Y);
+    line(0, line2Y, width, line2Y);
+    
     for (int i = 0; i < weekdays.length; i++) {
       textSize(40);
       text(weekdays[i], i*(width/8)+width/8, thisWeekY+50);
