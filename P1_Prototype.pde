@@ -20,6 +20,8 @@ int toolbarY = 710;
 Logbook b1;
 Summary summary;
 
+Sleep_Assist sleep;
+
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
   f.eks save.saveInt("five", 5);
@@ -44,6 +46,7 @@ void setup() {
   load = new LoadData();
   b1 = new Logbook();
   summary = new Summary();
+  sleep = new Sleep_Assist();
 
   
   save.saveInt("test variable", 5);
