@@ -9,6 +9,7 @@ PImage smileyHappy;
 PImage smileySleep;
 PImage summaryIcon;
 PImage infoIcon;
+PImage sleepIcon;
 
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
@@ -40,6 +41,7 @@ void setup() {
   smileySleep = loadImage("smileySleep.png");
   summaryIcon = loadImage("summaryIcon.png");
   infoIcon = loadImage("infoIcon.png");
+  sleepIcon = loadImage("sleepIcon.png");
   
   
   size(480, 853);
