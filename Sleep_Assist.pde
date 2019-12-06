@@ -2,12 +2,10 @@ class Sleep_Assist {
   PImage awake;
   PImage sleep;
 
-  int transition[];
-
+  int transition[] = new int[3];
   
 
   Sleep_Assist() {
-    
   }
 
   void displayCheck() {
@@ -27,4 +25,6 @@ class Sleep_Assist {
 
   void buttons() {
   }
+
+
 }
