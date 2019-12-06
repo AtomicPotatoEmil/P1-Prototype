@@ -2,14 +2,16 @@ SaveData save;
 LoadData load;
 
 PImage sleepHover;
+PImage sleepIcon;
 PImage summaryHover;
+PImage summaryIcon;
 PImage lexiconHover;
+PImage lexiconIcon;
 PImage mainUI;
 PImage smileyHappy;
 PImage smileySleep;
-PImage summaryIcon;
 PImage infoIcon;
-PImage sleepIcon;
+PImage background;
 
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
@@ -34,14 +36,16 @@ void setup() {
   load = new LoadData();
 
   sleepHover = loadImage("sleepHover.png");
+  sleepIcon = loadImage("sleepIcon.png");
   summaryHover = loadImage("summaryHover.png");
+  summaryIcon = loadImage("summaryIcon.png");
   lexiconHover = loadImage("lexiconHover.png");
+  lexiconIcon = loadImage("lexiconIcon.png");
   mainUI = loadImage("mainUI.png");
   smileyHappy = loadImage("smileyHappy.png");
   smileySleep = loadImage("smileySleep.png");
-  summaryIcon = loadImage("summaryIcon.png");
   infoIcon = loadImage("infoIcon.png");
-  sleepIcon = loadImage("sleepIcon.png");
+  background = loadImage("background.png");
   
   
   size(480, 853);
