@@ -15,6 +15,13 @@ PImage smileySleep;
 PImage infoIcon;
 PImage background;
 
+int sleepAssistX = 0;
+int summaryX = 158;
+int logbookX = 320;
+int toolbarY = 710;
+
+Logbook b1;
+
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
   f.eks save.saveInt("five", 5);
@@ -32,11 +39,12 @@ PImage background;
 
 
 String PAGE = "sleep assist";
-
+String Logbook = "logbook";
 void setup() {
 
   save = new SaveData();
   load = new LoadData();
+  b1 = new Logbook();
   
   mainLoad = new JSONObject();
   
@@ -66,7 +74,9 @@ void draw() {
   switch(PAGE){
     case "sleep assist":
       sleepAssist();
-      break;    
+      break;   
+      case "logbook":
+      b1.logbookDraw();
   }
   
 }
@@ -87,13 +97,60 @@ void logbook(){
 
 void mainUI(){
   
-  if(mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
+  if(mouseX > sleepAssistX && mouseX < 158 && mouseY > toolbarY && mouseY < 938){
     image(sleepHover, 0, 0);
-  }else if(mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+  }else if(mouseX > summaryX && mouseX < 316 && mouseY > toolbarY && mouseY < 938){
     image(summaryHover, 0, 0);
-  }else if(mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
+  }else if(mouseX > logbookX && mouseX < 520 && mouseY > toolbarY && mouseY < 938){
     image(lexiconHover, 0, 0);
   }else{
     image(mainUI, 0, 0);
+  }
+}
+void mousePressed() {
+  if (buttonOver1 == true) {
+    option1 ++;
+    userNumber ++;
+  } 
+  if (buttonOver2 == true) {
+    option2 ++;
+    userNumber ++;
+  }
+  if (buttonOver3 == true) { 
+    option3 ++;
+    userNumber ++;
+  }
+}
+void buttonMouseOverStatus() {
+  if (overButton1(buttonX1, buttonY1, buttonWidth, buttonHeight)) {
+    buttonOver1 = true;
+  } else if (overButton2(buttonX1, buttonY2, buttonWidth, buttonHeight)) {
+    buttonOver2 = true;
+  } else if (overButton3(buttonX1, buttonY3, buttonWidth, buttonHeight)) {
+    buttonOver3 = true;
+  } else if (overButton4(buttonX1, buttonY4, buttonWidth, buttonHeight)) {
+  }
+}
+boolean overButton1(int x, int y, int width, int height) { //When this function is called, all it needs is the button's x- and y-value, as well as its width and height.
+  if (mouseX >= x-width/2 && mouseX <= x+width/2 && mouseY >= y-height/2 && mouseY <= y+height/2) { //If the mouse is within the coordinates generated from this,
+    return true; //The function will return true,
+  } else { //If not,
+    return false; //It will return false.
+  }
+}
+
+boolean overButton2(int x, int y, int width, int height) {
+  if (mouseX > x-width/2 && mouseX < x+width/2 && mouseY > y-height/2 && mouseY < y+height/2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+boolean overButton3(int x, int y, int width, int height) {
+  if (mouseX > x-width/2 && mouseX < x+width/2 && mouseY > y-height/2 && mouseY < y+height/2) {
+    return true;
+  } else {
+    return false;
   }
 }
