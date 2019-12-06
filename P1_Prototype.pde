@@ -61,6 +61,18 @@ void startPage(){
   mainUI();
 }
 
+void sleepAssist(){
+  
+}
+
+void summary(){
+  
+}
+
+void lexicon(){
+  
+}
+
 void mainUI(){
   
   if(mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
