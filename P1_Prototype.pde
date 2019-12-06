@@ -1,6 +1,8 @@
 SaveData save;
 LoadData load;
 
+JSONObject mainLoad;
+
 PImage sleepHover;
 PImage sleepIcon;
 PImage summaryHover;
@@ -32,9 +34,16 @@ PImage background;
 String PAGE = "sleep assist";
 
 void setup() {
+
   save = new SaveData();
   load = new LoadData();
+  
+  mainLoad = new JSONObject();
+  
 
+  
+  save.saveInt("test variable", 5);
+  
   sleepHover = loadImage("sleepHover.png");
   sleepIcon = loadImage("sleepIcon.png");
   summaryHover = loadImage("summaryHover.png");
