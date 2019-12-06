@@ -12,10 +12,6 @@ PImage lexiconIcon;
 PImage mainUI;
 PImage background;
 
-int sleepAssistX = 0;
-int summaryX = 158;
-int logbookX = 320;
-int toolbarY = 710;
 
 Logbook b1;
 Summary summary;
@@ -95,21 +91,20 @@ void logbook(){
   mainUI();
   b1.logbookDraw();
 }
+ 
+ 
+boolean sleepIconPressed = false;
+boolean summaryIconPressed = false;
+boolean logbookIconPressed = false;
+
 
 void mainUI(){
-  boolean sleepIconPressed = false;
-  boolean summaryIconPressed = false;
-  boolean logbookIconPressed = false;
   
-  if (PAGE == "sleep assist"){
-    sleepIconPressed = true;
-  }
-
-  if(sleepIconPressed == false && mouseX > sleepAssistX && mouseX < 158 && mouseY > toolbarY && mouseY < 938){
+  if(sleepIconPressed == false && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
     image(sleepHover, 0, 0);
-  }else if(summaryIconPressed == false && mouseX > summaryX && mouseX < 316 && mouseY > toolbarY && mouseY < 938){
+  }else if(summaryIconPressed == false && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
     image(summaryHover, 0, 0);
-  }else if(logbookIconPressed == false && mouseX > logbookX && mouseX < 520 && mouseY > toolbarY && mouseY < 938){
+  }else if(logbookIconPressed == false && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
     image(lexiconHover, 0, 0);
   }else{
     image(mainUI, 0, 0);
@@ -123,5 +118,27 @@ void mainUI(){
   if(summaryIconPressed == false){
     summaryIcon.resize(200, 150);
     image(summaryIcon, 135, 720);
+  }
+  
+  if(logbookIconPressed == false){
+    lexiconIcon.resize(180, 130);
+    image(lexiconIcon, 308, 720);
+  }
+  
+  if(mousePressed && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
+    sleepIconPressed = true;
+    summaryIconPressed = false;
+    logbookIconPressed = false;
+  }
+  if(mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+    summaryIconPressed = true;
+    sleepIconPressed = false;
+    logbookIconPressed = false;
+  }
+  if(mousePressed && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
+    logbookIconPressed = true;
+    summaryIconPressed = false;
+    sleepIconPressed = false;
+    PAGE = "logbook";
   }
 }
