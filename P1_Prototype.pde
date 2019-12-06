@@ -138,5 +138,6 @@ void mainUI(){
     logbookIconPressed = true;
     summaryIconPressed = false;
     sleepIconPressed = false;
+    PAGE = "logbook";
   }
 }
