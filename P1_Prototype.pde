@@ -36,7 +36,7 @@ Summary summary;
 */
 
 
-String PAGE = "summary";
+String PAGE = "sleep assist";
 
 void setup() {
 
@@ -93,14 +93,31 @@ void logbook(){
 }
 
 void mainUI(){
+  boolean sleepIconPressed = false;
+  boolean summaryIconPressed = false;
+  boolean logbookIconPressed = false;
   
-  if(mouseX > sleepAssistX && mouseX < 158 && mouseY > toolbarY && mouseY < 938){
+  if (PAGE == "sleep assist"){
+    sleepIconPressed = true;
+  }
+
+  if(sleepIconPressed == false && mouseX > sleepAssistX && mouseX < 158 && mouseY > toolbarY && mouseY < 938){
     image(sleepHover, 0, 0);
-  }else if(mouseX > summaryX && mouseX < 316 && mouseY > toolbarY && mouseY < 938){
+  }else if(summaryIconPressed == false && mouseX > summaryX && mouseX < 316 && mouseY > toolbarY && mouseY < 938){
     image(summaryHover, 0, 0);
-  }else if(mouseX > logbookX && mouseX < 520 && mouseY > toolbarY && mouseY < 938){
+  }else if(logbookIconPressed == false && mouseX > logbookX && mouseX < 520 && mouseY > toolbarY && mouseY < 938){
     image(lexiconHover, 0, 0);
   }else{
     image(mainUI, 0, 0);
+  }
+  
+  if(sleepIconPressed == false){
+    image(sleepIcon, -10, 730);
+  }
+  
+
+  if(summaryIconPressed == false){
+    summaryIcon.resize(200, 150);
+    image(summaryIcon, 135, 720);
   }
 }
