@@ -26,7 +26,7 @@ PImage infoIcon;
 */
 
 
-String PAGE = "start";
+String PAGE = "sleep assist";
 
 void setup() {
   save = new SaveData();
@@ -49,20 +49,17 @@ void setup() {
 void draw() {
   
   switch(PAGE){
-    case "start":
-      startPage();
+    case "sleep assist":
+      sleepAssist();
       break;    
   }
   
 }
 
 
-void startPage(){
-  mainUI();
-}
 
 void sleepAssist(){
-  
+  mainUI();
 }
 
 void summary(){
