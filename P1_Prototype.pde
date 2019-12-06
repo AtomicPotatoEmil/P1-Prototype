@@ -1,13 +1,14 @@
 SaveData save;
 LoadData load;
 
-PImage mainButtons;
-PImage sleepButtonHover;
-PImage lexiconButtonHover;
-PImage infoButtonHover;
-
-PImage background;
+PImage sleepHover;
+PImage summaryHover;
+PImage lexiconHover;
 PImage mainUI;
+PImage smileyHappy;
+PImage smileySleep;
+PImage summaryIcon;
+PImage infoIcon;
 
 /*Hvis i skal gemme en int så brug funktionen:
   save.saveInt(name, number); I skal give den variable i gemmer et navn for at den kan blive gemt i JSON filen,
@@ -30,14 +31,16 @@ String PAGE = "start";
 void setup() {
   save = new SaveData();
   load = new LoadData();
-  
-  mainButtons = loadImage("mainButtons.png");
-  sleepButtonHover = loadImage("sleepButtonHover.png");
-  lexiconButtonHover = loadImage("lexiconButtonHover.png");
-  infoButtonHover = loadImage("infoButtonHover.png");
-  
-  background = loadImage("background.png");
+
+  sleepHover = loadImage("sleepHover.png");
+  summaryHover = loadImage("summaryHover.png");
+  lexiconHover = loadImage("lexiconHover.png");
   mainUI = loadImage("mainUI.png");
+  smileyHappy = loadImage("smileyHappy.png");
+  smileySleep = loadImage("smileySleep.png");
+  summaryIcon = loadImage("summaryIcon.png");
+  infoIcon = loadImage("infoIcon.png");
+  
   
   size(480, 853);
 }
@@ -55,18 +58,17 @@ void draw() {
 
 
 void startPage(){
-  image(background, 0, 0);
   mainUI();
 }
 
 void mainUI(){
   
-  if(mouseX > 0 && mouseX < 158 && mouseY > 718 && mouseY < 938){
-    image(sleepButtonHover, 0, 0);
-  }else if(mouseX > 158 && mouseX < 316 && mouseY > 718 && mouseY < 938){
-    image(lexiconButtonHover, 0, 0);
-  }else if(mouseX > 320 && mouseX < 520 && mouseY > 718 && mouseY < 938){
-    image(infoButtonHover, 0, 0);
+  if(mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
+    image(sleepHover, 0, 0);
+  }else if(mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+    image(summaryHover, 0, 0);
+  }else if(mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
+    image(lexiconHover, 0, 0);
   }else{
     image(mainUI, 0, 0);
   }
