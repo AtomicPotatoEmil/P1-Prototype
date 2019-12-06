@@ -38,7 +38,7 @@ Sleep_Assist sleep;
 */
 
 
-String PAGE = "sleep assist";
+String PAGE = "logbook";
 
 void setup() {
 
@@ -92,6 +92,7 @@ void summary(){
 }
 
 void logbook(){
+  mainUI();
   b1.logbookDraw();
 }
 
