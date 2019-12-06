@@ -72,7 +72,7 @@ void summary(){
   
 }
 
-void lexicon(){
+void logbook(){
   
 }
 
