@@ -42,7 +42,7 @@ void setup() {
   summary = new Summary();
   sleep = new Sleep_Assist();
   
-  sleep.saveDays();
+
   
   sleepHover = loadImage("sleepHover.png");
   sleepIcon = loadImage("sleepIcon.png");
