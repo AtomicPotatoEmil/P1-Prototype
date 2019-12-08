@@ -167,6 +167,7 @@ void mainUI(){
     PAGE = "summary";
   }
   if(mousePressed && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
+    sleep.loadDays();
     PAGE = "logbook";
   }
 }
