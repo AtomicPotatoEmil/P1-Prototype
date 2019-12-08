@@ -79,6 +79,10 @@ void draw() {
 void sleepAssist(){
   image(background, 0, 0);
   mainUI();
+  fill(0);
+  textSize(40);
+  textAlign(CENTER,CENTER);
+  text("SLEEP ASSIST",width/2,height/30);
 }
 
 void summary(){
