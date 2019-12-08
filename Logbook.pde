@@ -3,7 +3,9 @@ class Logbook {
   int titleX, titleY, totalScoreY, thisWeekY, lastWeekY, line1Y, line2Y;
   
   String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
-  int [] points = {0, 0, 0, 0, 0, 0, 0};
+  int[] points = {0, 0, 0, 0, 0, 0, 0};
+  
+  int[] placeholderPoints = {6, 8, 7, 9, 7, 7, 6};
   
   Logbook() {
     l1 = new LoadData();
@@ -15,6 +17,8 @@ class Logbook {
     lastWeekY = height/8*5;
     line1Y = height/4+50;
     line2Y = height/2+50;
+    
+    
   }
 
   void logbookDraw() {
@@ -61,6 +65,8 @@ class Logbook {
       points[6] = l1.loadJSON.getInt("Sunday");
     }
     
+    int weekTotal = points[0] + points[1] + points[2] + points[3] + points[4] + points[5] + points[6];
+    
     fill(0);
     textSize(40);
     textAlign(CENTER, CENTER);
@@ -68,7 +74,7 @@ class Logbook {
     textSize(20);
     text("Total score this week:", titleX, totalScoreY);
     textSize(40);
-    text("NIGGACAT", titleX, totalScoreY+75);
+    text(weekTotal, titleX, totalScoreY+75);
     textSize(20);
     text("Points this week:", titleX, thisWeekY);
     text("Points last week:", titleX, lastWeekY);
@@ -81,7 +87,7 @@ class Logbook {
       text(weekdays[i], i*(width/8)+width/8, thisWeekY+50);
       text(points[i], i*(width/8)+width/8, thisWeekY+100);
       text(weekdays[i], i*(width/8)+width/8, lastWeekY+50);
-      text(weekdays[i], i*(width/8)+width/8, lastWeekY+100);
+      text(placeholderPoints[i], i*(width/8)+width/8, lastWeekY+100);
     }
   }
 }
