@@ -43,9 +43,6 @@ void setup() {
   summary = new Summary();
   sleep = new Sleep_Assist();
 
-  
-  save.saveInt("test variable", 5);
-  
   sleepHover = loadImage("sleepHover.png");
   sleepIcon = loadImage("sleepIcon.png");
   summaryHover = loadImage("summaryHover.png");
@@ -80,12 +77,17 @@ void draw() {
 
 
 void sleepAssist(){
+  image(background, 0, 0);
   mainUI();
 }
 
 void summary(){
   image(background, 0, 0);
   mainUI();
+  fill(0);
+  textSize(40);
+  textAlign(CENTER, CENTER);
+  text("SUMMARY", width/2, height/30);
 }
 
 void logbook(){

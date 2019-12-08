@@ -1,5 +1,4 @@
 class Summary{
-  PImage mainUI;
   PImage infoIcon;
   PImage labels;
   
@@ -8,7 +7,6 @@ class Summary{
   
   Summary(){
     infoIcon = loadImage("infoIcon.png");
-    mainUI = loadImage("mainUI.png");
     
     PImage [] tips = {};
     tipsIndex = 0;
