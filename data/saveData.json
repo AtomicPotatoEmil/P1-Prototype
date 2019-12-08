@@ -1,1 +1,10 @@
-{"test variable": 5}
+{
+  "sunday": 0,
+  "saturday": 0,
+  "tuesday": 6,
+  "wednesday": 0,
+  "thursday": 0,
+  "friday": 0,
+  "current day": 2,
+  "monday": 6
+}

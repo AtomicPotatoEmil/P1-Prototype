@@ -5,12 +5,12 @@ class SaveData {
   SaveData() {
     saveJSON = new JSONObject();
   }
-
+  
   void saveInt(String name, int number) {
     saveJSON.setInt(name, number);
     saveJSONObject(saveJSON, "data/saveData.json");
   }
-
+  
   void saveString(String name, String string) {
     saveJSON.setString(name, string);
     saveJSONObject(saveJSON, "data/saveData.json");

@@ -23,6 +23,8 @@ class Logbook {
 
   void logbookDraw() {
     
+    
+    
     if(l1.loadJSON.isNull("monday")){
       points[0] = 0;
     }else{

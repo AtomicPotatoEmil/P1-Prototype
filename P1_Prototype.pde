@@ -1,7 +1,6 @@
 SaveData save;
 LoadData load;
 
-
 PImage sleepHover;
 PImage sleepIcon;
 PImage summaryHover;
@@ -42,7 +41,9 @@ void setup() {
   b1 = new Logbook();
   summary = new Summary();
   sleep = new Sleep_Assist();
-
+  
+  sleep.saveDays();
+  
   sleepHover = loadImage("sleepHover.png");
   sleepIcon = loadImage("sleepIcon.png");
   summaryHover = loadImage("summaryHover.png");
@@ -55,6 +56,7 @@ void setup() {
   
   
   size(480, 853);
+  
 }
 
 
