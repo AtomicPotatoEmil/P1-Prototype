@@ -134,7 +134,6 @@ class Sleep_Assist {
   }
   
   void assignPoints(int point){
-    loadDays();
     daysPoints[currentDay] = point;
     currentDay += 1;
     saveDays();
