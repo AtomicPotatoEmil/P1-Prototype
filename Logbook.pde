@@ -44,7 +44,7 @@ class Logbook {
     if(l1.loadJSON.isNull("thursday")){
       points[3] = 0;
     }else{
-      points[3] = l1.loadJSON.getInt("monday");
+      points[3] = l1.loadJSON.getInt("thursday");
     }
     
     if(l1.loadJSON.isNull("friday")){
