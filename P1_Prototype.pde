@@ -1,7 +1,6 @@
 SaveData save;
 LoadData load;
 
-JSONObject mainLoad;
 
 PImage sleepHover;
 PImage sleepIcon;
@@ -11,11 +10,11 @@ PImage lexiconHover;
 PImage lexiconIcon;
 PImage mainUI;
 PImage background;
+PImage arrow;
 
 
 Logbook b1;
 Summary summary;
-
 Sleep_Assist sleep;
 
 /*Hvis i skal gemme en int så brug funktionen:
@@ -34,7 +33,7 @@ Sleep_Assist sleep;
 */
 
 
-String PAGE = "logbook";
+String PAGE = "sleep assist";
 
 void setup() {
 
@@ -55,6 +54,7 @@ void setup() {
   lexiconIcon = loadImage("lexiconIcon.png");
   mainUI = loadImage("mainUI.png");
   background = loadImage("background.png");
+  arrow = loadImage("arrow.png");
   
   
   size(480, 853);
@@ -84,7 +84,8 @@ void sleepAssist(){
 }
 
 void summary(){
-  summary.drawUI();
+  image(background, 0, 0);
+  mainUI();
 }
 
 void logbook(){
@@ -100,6 +101,24 @@ boolean logbookIconPressed = false;
 
 void mainUI(){
   
+  if(PAGE == "sleep assist"){
+    sleepIconPressed = true;
+  }else{
+    sleepIconPressed = false;
+  }
+  
+  if(PAGE == "summary"){
+    summaryIconPressed = true;
+  }else{
+    summaryIconPressed = false;
+  }
+  
+  if(PAGE == "logbook"){
+    logbookIconPressed = true;
+  }else{
+    logbookIconPressed = false;
+  }
+  
   if(sleepIconPressed == false && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
     image(sleepHover, 0, 0);
   }else if(summaryIconPressed == false && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
@@ -112,33 +131,34 @@ void mainUI(){
   
   if(sleepIconPressed == false){
     image(sleepIcon, -10, 730);
+  }else{
+    arrow.resize(300, 200);
+    image(arrow, -75, 690);
   }
   
-
   if(summaryIconPressed == false){
     summaryIcon.resize(200, 150);
     image(summaryIcon, 135, 720);
+  }else{
+    arrow.resize(300, 200);
+    image(arrow, 80, 690);
   }
   
   if(logbookIconPressed == false){
     lexiconIcon.resize(180, 130);
     image(lexiconIcon, 308, 720);
+  }else{
+    arrow.resize(300, 200);
+    image(arrow, 240, 690);
   }
   
   if(mousePressed && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
-    sleepIconPressed = true;
-    summaryIconPressed = false;
-    logbookIconPressed = false;
+    PAGE = "sleep assist";
   }
   if(mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
-    summaryIconPressed = true;
-    sleepIconPressed = false;
-    logbookIconPressed = false;
+    PAGE = "summary";
   }
   if(mousePressed && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
-    logbookIconPressed = true;
-    summaryIconPressed = false;
-    sleepIconPressed = false;
     PAGE = "logbook";
   }
 }

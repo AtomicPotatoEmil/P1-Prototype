@@ -3,16 +3,18 @@ class Summary{
   PImage infoIcon;
   PImage labels;
   
-  String [] tipLabels = {};
-  int tipsIndex = 0;
+  
+  int tipsIndex;
   
   Summary(){
     infoIcon = loadImage("infoIcon.png");
     mainUI = loadImage("mainUI.png");
+    
+    PImage [] tips = {};
+    tipsIndex = 0;
+    
   }
   
-  void drawUI(){
-    image(mainUI, 0, 0);
-  }
+
   
 }
