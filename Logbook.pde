@@ -1,8 +1,13 @@
-String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
-class Logbook { 
+class Logbook {
+  LoadData l1;
   int titleX, titleY, totalScoreY, thisWeekY, lastWeekY, line1Y, line2Y;
-
+  
+  String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
+  int [] points = {0, 0, 0, 0, 0, 0, 0};
+  
   Logbook() {
+    l1 = new LoadData();
+    
     titleX = width/2;
     titleY = height/30;
     totalScoreY = height/8;
@@ -13,6 +18,49 @@ class Logbook {
   }
 
   void logbookDraw() {
+    
+    if(l1.loadJSON.isNull("monday")){
+      points[0] = 0;
+    }else{
+      points[0] = l1.loadJSON.getInt("monday");
+    }
+    
+    if(l1.loadJSON.isNull("tuesday")){
+      points[1] = 0;
+    }else{
+      points[1] = l1.loadJSON.getInt("tuesday");
+    }
+    
+    if(l1.loadJSON.isNull("wednesday")){
+      points[2] = 0;
+    }else{
+      points[2] = l1.loadJSON.getInt("wednesday");
+    }
+    
+    if(l1.loadJSON.isNull("thursday")){
+      points[3] = 0;
+    }else{
+      points[3] = l1.loadJSON.getInt("monday");
+    }
+    
+    if(l1.loadJSON.isNull("friday")){
+      points[4] = 0;
+    }else{
+      points[4] = l1.loadJSON.getInt("friday");
+    }
+    
+    if(l1.loadJSON.isNull("saturday")){
+      points[5] = 0;
+    }else{
+      points[5] = l1.loadJSON.getInt("saturday");
+    }
+    
+    if(l1.loadJSON.isNull("Sunday")){
+      points[6] = 0;
+    }else{
+      points[6] = l1.loadJSON.getInt("Sunday");
+    }
+    
     fill(0);
     textSize(40);
     textAlign(CENTER, CENTER);
@@ -31,7 +79,7 @@ class Logbook {
     for (int i = 0; i < weekdays.length; i++) {
       textSize(40);
       text(weekdays[i], i*(width/8)+width/8, thisWeekY+50);
-      text(weekdays[i], i*(width/8)+width/8, thisWeekY+100);
+      text(points[i], i*(width/8)+width/8, thisWeekY+100);
       text(weekdays[i], i*(width/8)+width/8, lastWeekY+50);
       text(weekdays[i], i*(width/8)+width/8, lastWeekY+100);
     }
