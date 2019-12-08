@@ -89,6 +89,7 @@ void sleepAssist(){
 
 void summary(){
   image(background, 0, 0);
+  summary.drawTips();
   mainUI();
   fill(0);
   textSize(40);
@@ -97,6 +98,7 @@ void summary(){
 }
 
 void logbook(){
+  image(background, 0, 0);
   mainUI();
   b1.logbookDraw();
 }
