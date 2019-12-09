@@ -13,10 +13,15 @@ class Sleep_Assist {
   int transitionIndex = 0;
 
   int sequence;
-  
+
   boolean firstPageCheck = false;
   boolean secondPageCheck = false;
   boolean thirdPageCheck = false;
+
+  int bottonX;
+  int bottonY;
+  int bottonW;
+  int bottonH;
 
 
   Sleep_Assist() {
@@ -24,7 +29,7 @@ class Sleep_Assist {
     l = new LoadData();
 
     currentDay = 0;
-    
+
     sequence = 1;
 
     awake = loadImage("smileyHappy.png");
@@ -32,14 +37,34 @@ class Sleep_Assist {
   }
 
   void firstPage() {
+    bottonX = ;
+    bottonY = ;
+    bottonW = ;
+    bottonH = ;
+
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
     text("Are you going to sleep now?", width/2, height/2 + 75);
     image(awake, 70, height/2-150);
+
+    if (mousePressed) {
+      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+        background(255);
+        mainUI();
+        firstPageCheck = false;
+        secondPageCheck = true;
+        thirdPageCheck = false;
+      }
+    }
   }
 
   void secondPage() {
+    bottonX = ;
+    bottonY = ;
+    bottonW = ;
+    bottonH = ;
+
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -47,17 +72,40 @@ class Sleep_Assist {
 
     imageMode(CENTER);
     image(sleep, 75, height/2-150);
-  }
 
+    if (mousePressed) {
+      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+        background(255);
+        mainUI();
+        firstPageCheck = false;
+        secondPageCheck = false;
+        thirdPageCheck = true;
+      }
+    }
+  }
   void thirdPage() {
+    bottonX = ;
+    bottonY = ;
+    bottonW = ;
+    bottonH = ;
+
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
     text("Are you awake?", width/2, height/2 + 75);
 
     image(sleep, 70, height/2-150);
-  }
 
+    if (mousePressed) {
+      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+        background(255);
+        mainUI();
+        firstPageCheck = true;
+        secondPageCheck = false;
+        thirdPageCheck = false;
+      }
+    }
+  }
 
   void switchDisplay() {
     switch(sequence) {
@@ -93,7 +141,7 @@ class Sleep_Assist {
     friday = daysPoints[4];
     saturday = daysPoints[5];
     sunday = daysPoints[6];
-  
+
     s.saveInt("monday", monday);
     s.saveInt("tuesday", tuesday);
     s.saveInt("wednesday", wednesday);
@@ -101,10 +149,10 @@ class Sleep_Assist {
     s.saveInt("friday", friday);
     s.saveInt("saturday", saturday);
     s.saveInt("sunday", sunday);
-  
+
     s.saveInt("current day", currentDay);
   }
-  
+
   void loadDays() {
     if (l.loadJSON.isNull("monday")) {
       println("not found");
@@ -141,19 +189,18 @@ class Sleep_Assist {
     } else {
       daysPoints[6] = l.loadJSON.getInt("sunday");
     }
-  
+
     if (l.loadJSON.isNull("current day")) {
       println("not found");
     } else {
       currentDay = l.loadJSON.getInt("current day");
     }
   }
-  
-    void assignPoints(int point) {
-      loadDays();
-      daysPoints[currentDay] = point;
-      currentDay += 1;
-      saveDays();
-    }
 
+  void assignPoints(int point) {
+    loadDays();
+    daysPoints[currentDay] = point;
+    currentDay += 1;
+    saveDays();
+  }
 }
