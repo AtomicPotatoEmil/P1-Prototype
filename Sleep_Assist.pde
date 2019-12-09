@@ -13,7 +13,7 @@ class Sleep_Assist {
   int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
   int currentDay;
 
-  int sequence;
+  int sequence = 1;
 
   int bottonX;
   int bottonY;
@@ -27,50 +27,67 @@ class Sleep_Assist {
 
     currentDay = 0;
 
-    sequence = 1;
 
     awake = loadImage("smileyHappy.png");
     sleep = loadImage("smileySleep.png");
     goodnightBtn = loadImage("goodnightButton.png");
-    goodnightBtnHover = loadImage("goodnightButton.png");
+    goodnightBtnHover = loadImage("goodnightButtonHover.png");
     goodmorningBtn = loadImage("goodmorningBtn.png");
     goodmorningBtnHover = loadImage("goodmorningBtnHover.png");
   }
 
   void firstPage() {
+    loadDays();
+    if (currentDay >= 7) {
+      currentDay = 0;
+      for (int i = 0; i < daysPoints.length; i++) {
+        daysPoints[i] = 0;
+        saveDays();
+      }
+    }
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
-    text("Are you going to sleep now?", width/2, height/2 - 55);
-    image(awake, 70, height/2-300);
-    
-    //480, 853
-    
-    image(goodnightBtn,5, height/2-450);
+    text("Are you going to sleep now?", width/2, height/2 - 180);
+    image(awake, 70, height/2-380);
 
- 
-    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-      sequence = 2;    
+
+    if (mouseX > 155 && mouseX < 320 && mouseY > 300 && mouseY < 390) {
+      goodnightBtnHover.resize(300, 500);
+      image(goodnightBtnHover, 90, 10);
+    } else {
+      goodnightBtn.resize(300, 500);
+      image(goodnightBtn, 90, 10);
     }
-    
+
+    if (mousePressed && mouseX > 155 && mouseX < 320 && mouseY > 300 && mouseY < 390) {
+      sequence = 2;
+    }
   }
 
   void secondPage() {
-    fill(0);
+    sleepPointsTracker();
+    image(sleep, 70, height/2-380);
     textAlign(CENTER, CENTER);
     textSize(30);
-    text("Great, Goodnight!", width/2, height/2 + 75);
+    text("Are you awake now?", width/2, height/2 - 180);
 
-    imageMode(CENTER);
-    image(sleep, 75, height/2-150);
-    
+    fill(250, 0, 0, 50);
+    rect(125, 440, 220, 90);
 
-
-    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-      sequence = 3;
+    if (mouseX > 125 && mouseX < 345 && mouseY > 440 && mouseY < 530) {
+      goodmorningBtnHover.resize(300, 500);
+      image(goodmorningBtnHover, 85, 150);
+    } else {
+      goodmorningBtn.resize(300, 500);
+      image(goodmorningBtn, 85, 150);
     }
-    
+
+    if (mousePressed && mouseX > 125 && mouseX < 345 && mouseY > 440 && mouseY < 530) {
+      assignPoints();
+    }
   }
+
   void thirdPage() {
     fill(0);
     textAlign(CENTER, CENTER);
@@ -78,14 +95,13 @@ class Sleep_Assist {
     text("Are you awake?", width/2, height/2 + 75);
 
     image(sleep, 70, height/2-150);
-    image(goodmorningBtn,5, height/2-450);
-    
+    image(goodmorningBtn, 5, height/2-450);
+
 
 
     if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
       sequence = 1;
     }
-    
   }
 
   void switchDisplay() {
@@ -169,10 +185,40 @@ class Sleep_Assist {
     }
   }
 
-  void assignPoints(int point) {
+  void assignPoints() {
+     currentDay += 1;
+     saveDays();
+    
+  }
+
+  void sleepPointsTracker() {
+    int points = millis() / 1000;
     loadDays();
-    daysPoints[currentDay] = point;
-    currentDay += 1;
-    saveDays();
+    if (points < 1) {
+      daysPoints[currentDay] = 0;
+    } else if (points == 1) {
+      daysPoints[currentDay] = 10;
+    } else if (points == 2) {
+      daysPoints[currentDay] = 20;
+    } else if (points == 3) {
+      daysPoints[currentDay] = 30;
+    } else if (points == 4) {
+      daysPoints[currentDay] = 40;
+    } else if (points == 5) {
+      daysPoints[currentDay] = 50;
+    } else if (points == 6) {
+      daysPoints[currentDay] = 60;
+    } else if (points == 7) {
+      daysPoints[currentDay] = 70;
+    } else if (points == 8) {
+      daysPoints[currentDay] = 80;
+    } else if (points == 9) {
+      daysPoints[currentDay] = 90;
+    } else if (points >= 10) {
+      daysPoints[currentDay] = 100;
+    }
+
+    println(points);
+    println(daysPoints[currentDay]);
   }
 }
