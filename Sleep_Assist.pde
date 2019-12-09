@@ -6,6 +6,8 @@ class Sleep_Assist {
   PImage sleep;
   PImage goodnightBtn;
   PImage goodnightBtnHover;
+  PImage goodmorningBtn;
+  PImage goodmorningBtnHover;
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
   int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
@@ -38,6 +40,8 @@ class Sleep_Assist {
     sleep = loadImage("smileySleep.png");
     goodnightBtn = loadImage("goodnightButton.png");
     goodnightBtnHover = loadImage("goodnightButton.png");
+    goodmorningBtn = loadImage("goodmorningBtn.png");
+    goodmorningBtnHover = loadImage("goodmorningBtnHover");
   }
 
   void firstPage() {
