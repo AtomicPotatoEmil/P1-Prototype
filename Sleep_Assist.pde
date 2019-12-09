@@ -57,10 +57,7 @@ class Sleep_Assist {
 
 
   void switchDisplay(){
-    for(int i = 0; i <= 3;i++){
-      transitionIndex++;
-      switch(transition[transitionIndex]){
-        
+      switch(sequence){
       case 1:
       firstPage();
       break;
@@ -148,8 +145,5 @@ class Sleep_Assist {
     currentDay += 1;
     saveDays();
   }
-  
-
-  
   
 }
