@@ -1,5 +1,6 @@
 class Logbook {
   LoadData l1;
+  Sleep_Assist s1;
   int titleX, titleY, totalScoreY, thisWeekY, lastWeekY, line1Y, line2Y;
   
   String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
@@ -9,6 +10,7 @@ class Logbook {
   
   Logbook() {
     l1 = new LoadData();
+    s1 = new Sleep_Assist();
     
     titleX = width/2;
     titleY = height/30;
@@ -22,8 +24,7 @@ class Logbook {
   }
 
   void logbookDraw() {
-    
-    
+    s1.loadDays();
     
     if(l1.loadJSON.isNull("monday")){
       points[0] = 0;
