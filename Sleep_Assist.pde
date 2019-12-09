@@ -41,11 +41,6 @@ class Sleep_Assist {
   }
 
   void firstPage() {
-    bottonX = ;
-    bottonY = ;
-    bottonW = ;
-    bottonH = ;
-
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -64,11 +59,6 @@ class Sleep_Assist {
   }
 
   void secondPage() {
-    bottonX = ;
-    bottonY = ;
-    bottonW = ;
-    bottonH = ;
-
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -88,11 +78,6 @@ class Sleep_Assist {
     }
   }
   void thirdPage() {
-    bottonX = ;
-    bottonY = ;
-    bottonW = ;
-    bottonH = ;
-
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
