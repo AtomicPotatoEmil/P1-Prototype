@@ -13,9 +13,6 @@ class Sleep_Assist {
   int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
   int currentDay;
 
-  int [] transition = {1, 2, 3, 4};
-  int transitionIndex = 0;
-
   int sequence;
 
   int bottonX;
