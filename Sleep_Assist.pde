@@ -18,10 +18,6 @@ class Sleep_Assist {
 
   int sequence;
 
-  boolean firstPageCheck = false;
-  boolean secondPageCheck = false;
-  boolean thirdPageCheck = false;
-
   int bottonX;
   int bottonY;
   int bottonW;
@@ -55,15 +51,11 @@ class Sleep_Assist {
     
     image(goodnightBtn,5, height/2-450);
 
-    if (mousePressed) {
-      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-        background(255);
-        mainUI();
-        firstPageCheck = false;
-        secondPageCheck = true;
-        thirdPageCheck = false;
-      }
+ 
+    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+      sequence = 2;    
     }
+    
   }
 
   void secondPage() {
@@ -76,15 +68,11 @@ class Sleep_Assist {
     image(sleep, 75, height/2-150);
     
 
-    if (mousePressed) {
-      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-        background(255);
-        mainUI();
-        firstPageCheck = false;
-        secondPageCheck = false;
-        thirdPageCheck = true;
-      }
+
+    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+      sequence = 3;
     }
+    
   }
   void thirdPage() {
     fill(0);
@@ -96,38 +84,25 @@ class Sleep_Assist {
     image(goodmorningBtn,5, height/2-450);
     
 
-    if (mousePressed) {
-      if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-        background(255);
-        mainUI();
-        firstPageCheck = true;
-        secondPageCheck = false;
-        thirdPageCheck = false;
-      }
+
+    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+      sequence = 1;
     }
+    
   }
 
   void switchDisplay() {
     switch(sequence) {
     case 1:
       firstPage();
-      firstPageCheck = true;
-      secondPageCheck = false;
-      thirdPageCheck = false;
       break;
 
     case 2:
       secondPage();
-      firstPageCheck = false;
-      secondPageCheck = true;
-      thirdPageCheck = false;
       break;
 
     case 3:
       thirdPage();
-      firstPageCheck = false;
-      secondPageCheck = false;
-      thirdPageCheck = true;
       break;
     }
   }
