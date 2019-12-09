@@ -6,7 +6,7 @@ class Logbook {
   String[] weekdays = {"M", "T", "W", "T", "F", "S", "S"};
   int[] points = {0, 0, 0, 0, 0, 0, 0};
   
-  int[] placeholderPoints = {6, 8, 7, 9, 7, 7, 6};
+  int[] placeholderPoints = {60, 80, 70, 90, 70, 70, 60};
   
   Logbook() {
     l1 = new LoadData();
