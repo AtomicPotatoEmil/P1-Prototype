@@ -88,8 +88,11 @@ class Logbook {
     for (int i = 0; i < weekdays.length; i++) {
       textSize(40);
       text(weekdays[i], i*(width/8)+width/8, thisWeekY+50);
+      textSize(30);
       text(points[i], i*(width/8)+width/8, thisWeekY+100);
+      textSize(40);
       text(weekdays[i], i*(width/8)+width/8, lastWeekY+50);
+      textSize(30);
       text(placeholderPoints[i], i*(width/8)+width/8, lastWeekY+100);
     }
   }
