@@ -8,6 +8,8 @@ class Sleep_Assist {
   PImage goodnightBtnHover;
   PImage goodmorningBtn;
   PImage goodmorningBtnHover;
+  PImage knapbg;
+  PImage blackArrow;
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
   int[] daystime = {0, 0, 0, 0, 0, 0, 0};
@@ -38,6 +40,8 @@ class Sleep_Assist {
     goodnightBtnHover = loadImage("goodnightButtonHover.png");
     goodmorningBtn = loadImage("goodmorningBtn.png");
     goodmorningBtnHover = loadImage("goodmorningBtnHover.png");
+    knapbg = loadImage("knapbg.png");
+    blackArrow = loadImage("blackArrow.png");
   }
 
   void firstPage() {
@@ -95,11 +99,15 @@ class Sleep_Assist {
   void thirdPage() {
     fill(0);
     textAlign(CENTER, CENTER);
-    textSize(30);
-    text("Are you awake?", width/2, height/2 + 75);
-
-    image(sleep, 70, height/2-150);
-    image(goodmorningBtn, 5, height/2-450);
+    textSize(20);
+    text("Congratulations! You have earned: ", width/2, height/2 - 90);
+    fill(0);
+    textAlign(CENTER, CENTER);
+    textSize(40);
+    text("50 POINTS",width/2,height/2);
+    image(awake, 70, height/2-300);
+    image(knapbg,width/2-110, height/2+130);
+    image(blackArrow, width/2-30, height/2+150);
 
 
 
