@@ -9,7 +9,7 @@ class Sleep_Assist {
   int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
   int currentDay;
   
-  int [] transition = {1, 2, 3};
+  int [] transition = {1, 2, 3, 4};
   int transitionIndex = 0;
   
   int sequence = 0;
@@ -20,47 +20,57 @@ class Sleep_Assist {
     l = new LoadData();
     
     currentDay = 0;
-  }
-
-  void displayCheck() {
-    textSize(20);
-    text("Do you go bed now", width/2, height/2 - 50);
-  }
-
-  void displayGoodnight() {
-    sleep = loadImage("smileySleep.png");
     
-    imageMode(CENTER);
-    image(sleep, width/2, height/2);
-  }
-
-  void displayAwake() {
     awake = loadImage("smileyHappy.png");
+    sleep = loadImage("smileySleep.png");
+  }
+
+  void firstPage() {
+    fill(0);
+    textAlign(CENTER,CENTER);
+    textSize(30);
+    text("Are you going to sleep now?", width/2, height/2 + 75);
+    image(awake,70,height/2-150);
+  }
+
+  void secondPage() {
+     fill(0);
+    textAlign(CENTER,CENTER);
+    textSize(30);
+    text("Great, Goodnight!", width/2, height/2 + 75);
     
     imageMode(CENTER);
-    image(awake, width/2, height/2);
+    image(sleep, 75, height/2-150);
     
   }
 
-  void transition() {
-  }
-
-  void buttons() {
+  void thirdPage() {
+    fill(0);
+    textAlign(CENTER,CENTER);
+    textSize(30);
+    text("Are you awake?", width/2, height/2 + 75);
+    
+    image(sleep,70,height/2-150);
+    
     
   }
+
 
   void switchDisplay(){
     for(int i = 0; i <= 3;i++){
       transitionIndex++;
       switch(transition[transitionIndex]){
+        
       case 1:
-      displayCheck();
+      firstPage();
       break;
+      
       case 2:
-      displayGoodnight();
+      secondPage();
       break;
+      
       case 3:
-      displayAwake();
+      thirdPage();
       break;
       }
     

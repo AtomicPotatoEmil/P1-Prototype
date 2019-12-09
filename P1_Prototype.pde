@@ -85,6 +85,7 @@ void sleepAssist(){
   textSize(40);
   textAlign(CENTER,CENTER);
   text("SLEEP ASSIST",width/2,height/30);
+  sleep.firstPage();
 }
 
 void summary(){
