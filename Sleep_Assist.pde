@@ -10,8 +10,10 @@ class Sleep_Assist {
   PImage goodmorningBtnHover;
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
-  int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
+  int[] daystime = {0, 0, 0, 0, 0, 0, 0};
   int currentDay;
+
+  int points;
 
   int sequence = 1;
 
@@ -19,6 +21,8 @@ class Sleep_Assist {
   int bottonY;
   int bottonW;
   int bottonH;
+  
+
 
 
   Sleep_Assist() {
@@ -40,8 +44,8 @@ class Sleep_Assist {
     loadDays();
     if (currentDay >= 7) {
       currentDay = 0;
-      for (int i = 0; i < daysPoints.length; i++) {
-        daysPoints[i] = 0;
+      for (int i = 0; i < daystime.length; i++) {
+        daystime[i] = 0;
         saveDays();
       }
     }
@@ -66,7 +70,7 @@ class Sleep_Assist {
   }
 
   void secondPage() {
-    sleepPointsTracker();
+    sleeptimeTracker();
     image(sleep, 70, height/2-380);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -84,7 +88,7 @@ class Sleep_Assist {
     }
 
     if (mousePressed && mouseX > 125 && mouseX < 345 && mouseY > 440 && mouseY < 530) {
-      assignPoints();
+      assigntime();
     }
   }
 
@@ -122,13 +126,13 @@ class Sleep_Assist {
 
 
   void saveDays() {
-    monday = daysPoints[0];
-    tuesday = daysPoints[1];
-    wednesday = daysPoints[2];
-    thursday = daysPoints[3];
-    friday = daysPoints[4];
-    saturday = daysPoints[5];
-    sunday = daysPoints[6];
+    monday = daystime[0];
+    tuesday = daystime[1];
+    wednesday = daystime[2];
+    thursday = daystime[3];
+    friday = daystime[4];
+    saturday = daystime[5];
+    sunday = daystime[6];
 
     s.saveInt("monday", monday);
     s.saveInt("tuesday", tuesday);
@@ -145,37 +149,37 @@ class Sleep_Assist {
     if (l.loadJSON.isNull("monday")) {
       println("not found");
     } else {
-      daysPoints[0] = l.loadJSON.getInt("monday");
+      daystime[0] = l.loadJSON.getInt("monday");
     }
     if (l.loadJSON.isNull("tuesday")) {
       println("not found");
     } else {
-      daysPoints[1] = l.loadJSON.getInt("tuesday");
+      daystime[1] = l.loadJSON.getInt("tuesday");
     }
     if (l.loadJSON.isNull("wednesday")) {
       println("not found");
     } else {
-      daysPoints[2] = l.loadJSON.getInt("wednesday");
+      daystime[2] = l.loadJSON.getInt("wednesday");
     }
     if (l.loadJSON.isNull("thursday")) {
       println("not found");
     } else {
-      daysPoints[3] = l.loadJSON.getInt("thursday");
+      daystime[3] = l.loadJSON.getInt("thursday");
     }
     if (l.loadJSON.isNull("friday")) {
       println("not found");
     } else {
-      daysPoints[4] = l.loadJSON.getInt("friday");
+      daystime[4] = l.loadJSON.getInt("friday");
     }
     if (l.loadJSON.isNull("saturday")) {
       println("not found");
     } else {
-      daysPoints[5] = l.loadJSON.getInt("saturday");
+      daystime[5] = l.loadJSON.getInt("saturday");
     }
     if (l.loadJSON.isNull("sunday")) {
       println("not found");
     } else {
-      daysPoints[6] = l.loadJSON.getInt("sunday");
+      daystime[6] = l.loadJSON.getInt("sunday");
     }
 
     if (l.loadJSON.isNull("current day")) {
@@ -185,47 +189,59 @@ class Sleep_Assist {
     }
   }
 
-  void assignPoints() {
+  void assigntime() {
      currentDay += 1;
      saveDays();
     
   }
 
-  void sleepPointsTracker() {
-    int points = millis() / 1000;
+  void sleeptimeTracker() {
+    int time = millis() / 1000;
     loadDays();
-    if(currentDay == daysPoints.length){
-      for(int i = 0; i < daysPoints.length; i++){
-        daysPoints[i] = 0;
+    if(currentDay == daystime.length){
+      for(int i = 0; i < daystime.length; i++){
+        daystime[i] = 0;
         saveDays();
       }
       currentDay = 0;
     }
-    if (points < 1) {
-      daysPoints[currentDay] = 0;
-    } else if (points == 1) {
-      daysPoints[currentDay] = 10;
-    } else if (points == 2) {
-      daysPoints[currentDay] = 20;
-    } else if (points == 3) {
-      daysPoints[currentDay] = 30;
-    } else if (points == 4) {
-      daysPoints[currentDay] = 40;
-    } else if (points == 5) {
-      daysPoints[currentDay] = 50;
-    } else if (points == 6) {
-      daysPoints[currentDay] = 60;
-    } else if (points == 7) {
-      daysPoints[currentDay] = 70;
-    } else if (points == 8) {
-      daysPoints[currentDay] = 80;
-    } else if (points == 9) {
-      daysPoints[currentDay] = 90;
-    } else if (points >= 10) {
-      daysPoints[currentDay] = 100;
+    if (time < 1) {
+      daystime[currentDay] = 0;
+      points = 0;
+    } else if (time == 1) {
+      daystime[currentDay] = 10;
+      points = 10;
+    } else if (time == 2) {
+      daystime[currentDay] = 20;
+      points = 20;
+    } else if (time == 3) {
+      daystime[currentDay] = 30;
+      points = 30;
+    } else if (time == 4) {
+      daystime[currentDay] = 40;
+      points = 40;
+    } else if (time == 5) {
+      daystime[currentDay] = 50;
+      points = 50;
+    } else if (time == 6) {
+      daystime[currentDay] = 60;
+      points = 60;
+    } else if (time == 7) {
+      daystime[currentDay] = 70;
+      points = 70;
+    } else if (time == 8) {
+      daystime[currentDay] = 80;
+      points = 80;
+    } else if (time == 9) {
+      daystime[currentDay] = 90;
+      points = 90;
+    } else if (time >= 10) {
+      daystime[currentDay] = 100;
+      points = 100;
     }
 
+    println(time);
+    println(daystime[currentDay]);
     println(points);
-    println(daysPoints[currentDay]);
   }
 }
