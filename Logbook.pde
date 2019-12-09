@@ -62,10 +62,10 @@ class Logbook {
       points[5] = l1.loadJSON.getInt("saturday");
     }
     
-    if(l1.loadJSON.isNull("Sunday")){
+    if(l1.loadJSON.isNull("sunday")){
       points[6] = 0;
     }else{
-      points[6] = l1.loadJSON.getInt("Sunday");
+      points[6] = l1.loadJSON.getInt("sunday");
     }
     
     int weekTotal = points[0] + points[1] + points[2] + points[3] + points[4] + points[5] + points[6];

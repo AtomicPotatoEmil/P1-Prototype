@@ -15,10 +15,6 @@ class Sleep_Assist {
 
   int sequence = 1;
 
-  int bottonX;
-  int bottonY;
-  int bottonW;
-  int bottonH;
 
 
   Sleep_Assist() {
@@ -38,13 +34,6 @@ class Sleep_Assist {
 
   void firstPage() {
     loadDays();
-    if (currentDay >= 7) {
-      currentDay = 0;
-      for (int i = 0; i < daysPoints.length; i++) {
-        daysPoints[i] = 0;
-        saveDays();
-      }
-    }
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -97,11 +86,9 @@ class Sleep_Assist {
     image(sleep, 70, height/2-150);
     image(goodmorningBtn, 5, height/2-450);
 
-
-
-    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
-      sequence = 1;
-    }
+    
+    
+    
   }
 
   void switchDisplay() {
@@ -194,14 +181,14 @@ class Sleep_Assist {
   void sleepPointsTracker() {
     int points = millis() / 1000;
     loadDays();
-    if(currentDay == daysPoints.length){
-      for(int i = 0; i < daysPoints.length; i++){
+    if (currentDay == 7) {
+      for (int i = 0; i < daysPoints.length; i++) {
         daysPoints[i] = 0;
-        saveDays();
       }
       currentDay = 0;
+      saveDays();
     }
-    if (points < 1) {
+    else if (points < 1) {
       daysPoints[currentDay] = 0;
     } else if (points == 1) {
       daysPoints[currentDay] = 10;
