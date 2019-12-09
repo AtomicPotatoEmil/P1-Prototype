@@ -6,8 +6,6 @@ class Sleep_Assist {
   PImage sleep;
   PImage goodnightBtn;
   PImage goodnightBtnHover;
-  PImage goodmorningBtn;
-  PImage goodmorningBtnHover;
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
   int[] daysPoints = {0, 0, 0, 0, 0, 0, 0};
@@ -40,20 +38,14 @@ class Sleep_Assist {
     sleep = loadImage("smileySleep.png");
     goodnightBtn = loadImage("goodnightButton.png");
     goodnightBtnHover = loadImage("goodnightButton.png");
-    goodmorningBtn = loadImage("goodmorningBtn.png");
-    goodmorningBtnHover = loadImage("goodmorningBtnHover.png");
   }
 
   void firstPage() {
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(30);
-    text("Are you going to sleep now?", width/2, height/2 - 55);
-    image(awake, 70, height/2-300);
-    
-    //480, 853
-    
-    image(goodnightBtn,5, height/2-450);
+    text("Are you going to sleep now?", width/2, height/2 + 75);
+    image(awake, 70, height/2-150);
 
     if (mousePressed) {
       if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
@@ -74,7 +66,6 @@ class Sleep_Assist {
 
     imageMode(CENTER);
     image(sleep, 75, height/2-150);
-    
 
     if (mousePressed) {
       if (mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
@@ -93,7 +84,7 @@ class Sleep_Assist {
     text("Are you awake?", width/2, height/2 + 75);
 
     image(sleep, 70, height/2-150);
-    image(goodmorningBtn,5, height/2-450);
+    
     
 
     if (mousePressed) {
