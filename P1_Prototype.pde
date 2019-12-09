@@ -166,7 +166,8 @@ void mainUI(){
   if(mousePressed && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
     PAGE = "sleep assist";
   }
-  if(mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+  if(summaryIconPressed == false && mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+    summary.tipsIndex = int(random(summary.tips.length));
     PAGE = "summary";
   }
   if(mousePressed && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
