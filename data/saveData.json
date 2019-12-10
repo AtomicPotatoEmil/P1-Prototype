@@ -1,10 +1,10 @@
 {
   "sunday": 0,
   "saturday": 0,
-  "tuesday": 50,
-  "wednesday": 100,
-  "thursday": 0,
+  "tuesday": 0,
+  "wednesday": 20,
+  "thursday": 40,
   "friday": 0,
-  "current day": 3,
-  "monday": 80
+  "current day": 4,
+  "monday": 30
 }

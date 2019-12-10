@@ -14,10 +14,14 @@ class Sleep_Assist {
   
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
-  int[] daystime = {0, 0, 0, 0, 0, 0, 0};
+  int[] day = {0, 0, 0, 0, 0, 0, 0};
   int currentDay;
 
   int points;
+  
+  int time;
+  int time2;
+  int totalTime;
 
   int sequence = 1;
 
@@ -32,7 +36,7 @@ class Sleep_Assist {
   Sleep_Assist() {
     s = new SaveData();
     l = new LoadData();
-
+    
     currentDay = 0;
 
 
@@ -51,8 +55,8 @@ class Sleep_Assist {
     loadDays();
     if (currentDay >= 7) {
       currentDay = 0;
-      for (int i = 0; i < daystime.length; i++) {
-        daystime[i] = 0;
+      for (int i = 0; i < day.length; i++) {
+        day[i] = 0;
         saveDays();
       }
     }
@@ -72,12 +76,14 @@ class Sleep_Assist {
     }
 
     if (mousePressed && mouseX > 155 && mouseX < 320 && mouseY > 300 && mouseY < 390) {
+      time = millis() / 1000;
       sequence = 2;
+      println(time);
     }
   }
 
   void secondPage() {
-    sleeptimeTracker();
+     loadDays();
     image(sleep, 70, height/2-380);
     textAlign(CENTER, CENTER);
     textSize(30);
@@ -95,8 +101,22 @@ class Sleep_Assist {
     }
 
     if (mousePressed && mouseX > 125 && mouseX < 345 && mouseY > 440 && mouseY < 530) {
-      assigntime();
+      loadDays();
+      if(currentDay == day.length){
+      for(int i = 0; i < day.length; i++){
+        day[i] = 0;
+        saveDays();
+      }
+      currentDay = 0;
+    }
+      time2 = millis() / 1000;
+      totalTime = time2 * 10 - time * 10;
       sequence = 3;
+      points = totalTime;
+      day[currentDay] = points;
+      assigntime();
+      println(totalTime);
+      println(points);
     }
   }
 
@@ -111,7 +131,7 @@ class Sleep_Assist {
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(40);
-    text("50 POINTS",width/2,height/2);
+    text(points,width/2,height/2);
     image(awake, 70, height/2-300);
 
 if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
@@ -148,13 +168,13 @@ if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
 
 
   void saveDays() {
-    monday = daystime[0];
-    tuesday = daystime[1];
-    wednesday = daystime[2];
-    thursday = daystime[3];
-    friday = daystime[4];
-    saturday = daystime[5];
-    sunday = daystime[6];
+    monday = day[0];
+    tuesday = day[1];
+    wednesday = day[2];
+    thursday = day[3];
+    friday = day[4];
+    saturday = day[5];
+    sunday = day[6];
 
     s.saveInt("monday", monday);
     s.saveInt("tuesday", tuesday);
@@ -171,37 +191,37 @@ if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
     if (l.loadJSON.isNull("monday")) {
       println("not found");
     } else {
-      daystime[0] = l.loadJSON.getInt("monday");
+      day[0] = l.loadJSON.getInt("monday");
     }
     if (l.loadJSON.isNull("tuesday")) {
       println("not found");
     } else {
-      daystime[1] = l.loadJSON.getInt("tuesday");
+      day[1] = l.loadJSON.getInt("tuesday");
     }
     if (l.loadJSON.isNull("wednesday")) {
       println("not found");
     } else {
-      daystime[2] = l.loadJSON.getInt("wednesday");
+      day[2] = l.loadJSON.getInt("wednesday");
     }
     if (l.loadJSON.isNull("thursday")) {
       println("not found");
     } else {
-      daystime[3] = l.loadJSON.getInt("thursday");
+      day[3] = l.loadJSON.getInt("thursday");
     }
     if (l.loadJSON.isNull("friday")) {
       println("not found");
     } else {
-      daystime[4] = l.loadJSON.getInt("friday");
+      day[4] = l.loadJSON.getInt("friday");
     }
     if (l.loadJSON.isNull("saturday")) {
       println("not found");
     } else {
-      daystime[5] = l.loadJSON.getInt("saturday");
+      day[5] = l.loadJSON.getInt("saturday");
     }
     if (l.loadJSON.isNull("sunday")) {
       println("not found");
     } else {
-      daystime[6] = l.loadJSON.getInt("sunday");
+      day[6] = l.loadJSON.getInt("sunday");
     }
 
     if (l.loadJSON.isNull("current day")) {
@@ -216,54 +236,5 @@ if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
      saveDays();
     
   }
-
-  void sleeptimeTracker() {
-    int time = millis() / 1000;
-    loadDays();
-    if(currentDay == daystime.length){
-      for(int i = 0; i < daystime.length; i++){
-        daystime[i] = 0;
-        saveDays();
-      }
-      currentDay = 0;
-    }
-    if (time < 1) {
-      daystime[currentDay] = 0;
-      points = 0;
-    } else if (time == 1) {
-      daystime[currentDay] = 10;
-      points = 10;
-    } else if (time == 2) {
-      daystime[currentDay] = 20;
-      points = 20;
-    } else if (time == 3) {
-      daystime[currentDay] = 30;
-      points = 30;
-    } else if (time == 4) {
-      daystime[currentDay] = 40;
-      points = 40;
-    } else if (time == 5) {
-      daystime[currentDay] = 50;
-      points = 50;
-    } else if (time == 6) {
-      daystime[currentDay] = 60;
-      points = 60;
-    } else if (time == 7) {
-      daystime[currentDay] = 70;
-      points = 70;
-    } else if (time == 8) {
-      daystime[currentDay] = 80;
-      points = 80;
-    } else if (time == 9) {
-      daystime[currentDay] = 90;
-      points = 90;
-    } else if (time >= 10) {
-      daystime[currentDay] = 100;
-      points = 100;
-    }
-
-    println(time);
-    println(daystime[currentDay]);
-    println(points);
-  }
+ 
 }
