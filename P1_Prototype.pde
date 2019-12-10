@@ -4,7 +4,7 @@ LoadData load;
 PImage sleepHover;
 PImage sleepIcon;
 PImage summaryHover;
-PImage summaryIcon;
+PImage lightbulbIcon;
 PImage lexiconHover;
 PImage lexiconIcon;
 PImage mainUI;
@@ -47,7 +47,7 @@ void setup() {
   sleepHover = loadImage("sleepHover.png");
   sleepIcon = loadImage("sleepIcon.png");
   summaryHover = loadImage("summaryHover.png");
-  summaryIcon = loadImage("summaryIcon.png");
+  lightbulbIcon = loadImage("lightbulbIcon.png");
   lexiconHover = loadImage("lexiconHover.png");
   lexiconIcon = loadImage("lexiconIcon.png");
   mainUI = loadImage("mainUI.png");
@@ -106,7 +106,7 @@ void logbook(){
  
  
 boolean sleepIconPressed = false;
-boolean summaryIconPressed = false;
+boolean lightbulbIconPressed = false;
 boolean logbookIconPressed = false;
 
 
@@ -119,9 +119,9 @@ void mainUI(){
   }
   
   if(PAGE == "suggestion"){
-    summaryIconPressed = true;
+    lightbulbIconPressed = true;
   }else{
-    summaryIconPressed = false;
+    lightbulbIconPressed = false;
   }
   
   if(PAGE == "logbook"){
@@ -132,7 +132,7 @@ void mainUI(){
   
   if(sleepIconPressed == false && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
     image(sleepHover, 0, 0);
-  }else if(summaryIconPressed == false && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+  }else if(lightbulbIconPressed == false && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
     image(summaryHover, 0, 0);
   }else if(logbookIconPressed == false && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
     image(lexiconHover, 0, 0);
@@ -147,9 +147,9 @@ void mainUI(){
     image(arrow, -75, 690);
   }
   
-  if(summaryIconPressed == false){
-    summaryIcon.resize(200, 150);
-    image(summaryIcon, 135, 720);
+  if(lightbulbIconPressed == false){
+    lightbulbIcon.resize(125, 125);
+    image(lightbulbIcon, 170, 720);
   }else{
     arrow.resize(300, 200);
     image(arrow, 80, 690);
@@ -166,7 +166,7 @@ void mainUI(){
   if(mousePressed && mouseX > 0 && mouseX < 158 && mouseY > 710 && mouseY < 938){
     PAGE = "sleep assist";
   }
-  if(summaryIconPressed == false && mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
+  if(lightbulbIconPressed == false && mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
     suggestion.tipsIndex = int(random(suggestion.tips.length));
     PAGE = "suggestion";
   }

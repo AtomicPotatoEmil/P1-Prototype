@@ -127,11 +127,15 @@ class Sleep_Assist {
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(20);
-    text("Congratulations! You have earned: ", width/2, height/2 - 90);
+    if(points / 10 >= 8){
+      text("Congratulations! You have slept: "+points / 10+" hour(s)", width/2, height/2 - 90);
+    }else{
+      text("You have slept: "+points / 10+" hour(s)", width/2, height/2 - 90);
+    }
     fill(0);
     textAlign(CENTER, CENTER);
-    textSize(40);
-    text(points,width/2,height/2);
+    textSize(30);
+    text("You have earned "+points+" points",width/2,height/2);
     image(awake, 70, height/2-300);
 
 if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
