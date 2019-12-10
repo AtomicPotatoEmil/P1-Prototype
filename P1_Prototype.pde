@@ -13,7 +13,7 @@ PImage arrow;
 
 
 Logbook b1;
-Summary summary;
+Suggestion suggestion;
 Sleep_Assist sleep;
 
 /*Hvis i skal gemme en int så brug funktionen:
@@ -39,7 +39,7 @@ void setup() {
   save = new SaveData();
   load = new LoadData();
   b1 = new Logbook();
-  summary = new Summary();
+  suggestion = new Suggestion();
   sleep = new Sleep_Assist();
   
 
@@ -69,8 +69,8 @@ void draw() {
     case "logbook":
       logbook();
       break;
-    case "summary":
-      summary();
+    case "suggestion":
+      suggestion();
       break;
   }
   
@@ -88,14 +88,14 @@ void sleepAssist(){
   text("SLEEP ASSIST",width/2,height/30);
 }
 
-void summary(){
+void suggestion(){
   image(background, 0, 0);
-  summary.drawTips();
+  suggestion.drawTips();
   mainUI();
   fill(0);
   textSize(40);
   textAlign(CENTER, CENTER);
-  text("SUMMARY", width/2, height/30);
+  text("SUGGESTION", width/2, height/30);
 }
 
 void logbook(){
@@ -118,7 +118,7 @@ void mainUI(){
     sleepIconPressed = false;
   }
   
-  if(PAGE == "summary"){
+  if(PAGE == "suggestion"){
     summaryIconPressed = true;
   }else{
     summaryIconPressed = false;
@@ -167,8 +167,8 @@ void mainUI(){
     PAGE = "sleep assist";
   }
   if(summaryIconPressed == false && mousePressed && mouseX > 158 && mouseX < 316 && mouseY > 710 && mouseY < 938){
-    summary.tipsIndex = int(random(summary.tips.length));
-    PAGE = "summary";
+    suggestion.tipsIndex = int(random(suggestion.tips.length));
+    PAGE = "suggestion";
   }
   if(mousePressed && mouseX > 320 && mouseX < 520 && mouseY > 710 && mouseY < 938){
     PAGE = "logbook";
