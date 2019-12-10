@@ -10,6 +10,8 @@ class Sleep_Assist {
   PImage goodmorningBtnHover;
   PImage knapbg;
   PImage blackArrow;
+  PImage bgHover;
+  
 
   int monday, tuesday, wednesday, thursday, friday, saturday, sunday;
   int[] daystime = {0, 0, 0, 0, 0, 0, 0};
@@ -42,6 +44,7 @@ class Sleep_Assist {
     goodmorningBtnHover = loadImage("goodmorningBtnHover.png");
     knapbg = loadImage("knapbg.png");
     blackArrow = loadImage("blackArrow.png");
+    bgHover = loadImage("3rdPage_hover_done.png");
   }
 
   void firstPage() {
@@ -110,9 +113,16 @@ class Sleep_Assist {
     textSize(40);
     text("50 POINTS",width/2,height/2);
     image(awake, 70, height/2-300);
-    image(knapbg,width/2-110, height/2+130);
-    image(blackArrow, width/2-30, height/2+150);
 
+if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
+      
+      image(bgHover, x,y);
+      image(blackArrow, width/2-30, height/2+150);
+    } else {
+      
+      image(knapbg,x,y);
+      image(blackArrow, width/2-30, height/2+150);
+    }
 
 
     if (mousePressed && mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
