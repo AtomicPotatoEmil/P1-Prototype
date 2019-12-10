@@ -93,10 +93,14 @@ class Sleep_Assist {
 
     if (mousePressed && mouseX > 125 && mouseX < 345 && mouseY > 440 && mouseY < 530) {
       assigntime();
+      sequence = 3;
     }
   }
 
   void thirdPage() {
+    int x = width/2-110;
+    int y = height/2+130;
+    
     fill(0);
     textAlign(CENTER, CENTER);
     textSize(20);
@@ -111,7 +115,7 @@ class Sleep_Assist {
 
 
 
-    if (mousePressed && mouseX < bottonX && mouseX > bottonX + bottonW && mouseY < bottonY && mouseY > bottonY + bottonH) {
+    if (mousePressed && mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
       sequence = 1;
     }
   }
