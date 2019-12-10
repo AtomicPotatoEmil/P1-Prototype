@@ -4,6 +4,7 @@ class Sleep_Assist {
 
   PImage awake;
   PImage sleep;
+  PImage sleepy;
   PImage goodnightBtn;
   PImage goodnightBtnHover;
   PImage goodmorningBtn;
@@ -49,6 +50,7 @@ class Sleep_Assist {
     knapbg = loadImage("knapbg.png");
     blackArrow = loadImage("blackArrow.png");
     bgHover = loadImage("3rdPage_hover_done.png");
+    sleepy = loadImage("sleepySmiley.png");
   }
 
   void firstPage() {
@@ -136,7 +138,12 @@ class Sleep_Assist {
     textAlign(CENTER, CENTER);
     textSize(30);
     text("You have earned "+points+" points",width/2,height/2);
-    image(awake, 70, height/2-300);
+    
+    if(points / 10 > 5){
+      image(awake, 70, height/2-300);
+    }else{
+      image(sleepy, 70, height/2-300); 
+    }
 
 if (mouseX > x && mouseX < x + 220 && mouseY > y && mouseY < y + 110) {
       
