@@ -1,4 +1,4 @@
-# P1-Prototype
+# P1-Prototype 1st semester Medialoy 2019
 
 This is a group project made by me and my 1st semester Medialogy study group at Aalborg University. This Project is based on the theme "Designing from both Sides of the Screen" and the sub-theme "Improving Sleep". The purpose of the application is to help students keep track of their sleep. The design is based on informatioon gathered through the "thinking aloud" method.
 
